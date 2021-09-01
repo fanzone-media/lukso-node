@@ -1,0 +1,63 @@
+#FROM alpine
+FROM debian
+
+#WORKDIR /l15-node
+
+#ADD lukso.sh .
+
+#RUN apk update
+#RUN apk upgrade
+#RUN apk add curl bash
+
+RUN apt update
+RUN apt -y upgrade
+RUN apt -y install wget curl
+
+# Set Hostname
+RUN echo "AntonioDocker" > /etc/hostname
+
+# Pull latest setup script
+RUN wget -O ./lukso.sh https://install.l15.lukso.network --no-check-certificate
+
+# Make LUKSO shell script executable
+RUN chmod +x ./lukso.sh
+
+# Get latest binaries for all tasks
+#RUN bash ./lukso.sh --download_binaries
+
+# pandora
+# ---
+# bootnode
+EXPOSE 45451
+# rpc port
+EXPOSE 8545
+# websocket endpoint
+EXPOSE 8546
+# port (flag name is vague)
+EXPOSE 30405
+
+# vanguard
+# ---
+# grpc endpoint
+EXPOSE 4000
+# discv5
+EXPOSE 4841
+# p2p udp
+EXPOSE 12000/udp
+# p2p tcp
+EXPOSE 13000
+# grcp gateway
+EXPOSE 3500
+
+# orchestrator
+# ---
+# http
+EXPOSE 7877
+# ws
+EXPOSE 7878
+
+
+# When we docker run, start an archive node
+#CMD bash ./lukso.sh --run_arch
+
+#CMD sleep infinity
