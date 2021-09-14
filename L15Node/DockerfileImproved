@@ -23,7 +23,7 @@ RUN wget -O ./lukso.sh https://install.l15.lukso.network --no-check-certificate
 RUN chmod +x ./lukso.sh
 
 # Get latest binaries for all tasks
-#RUN bash ./lukso.sh --download_binaries
+RUN bash ./lukso.sh --download_binaries
 
 # pandora
 # ---
