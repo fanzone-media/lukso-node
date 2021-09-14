@@ -1,0 +1,17 @@
+{
+  "name": "chain-listener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.12",
+    "web3": "^1.5.2"
+  }
+}
